@@ -20,7 +20,7 @@ export function Navbar() {
         >
         </div> */}
         <Link href={"/"} className="flex gap-x-2 pr-7">
-          <p>Kepler</p>
+          <p className="font-heading">Kepler</p>
           <FaSpaceShuttle className="w-7 h-6"/>
         </Link>
         <div className={`${navActive ? "active" : ""} flex  gap-x-5 py-4`}>

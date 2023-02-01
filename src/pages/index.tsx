@@ -4,7 +4,17 @@ import { Layout } from "../components/layout"
 import { api } from "../utils/api";
 import React from "react";
 import { Tab } from "@headlessui/react";
-import * as Planets from "../components/content/";
+import {
+  SunContent,
+  MercuryContent,
+  VenusContent,
+  EarthContent,
+  MarsContent,
+  JupiterContent,
+  SaturnContent,
+  UranusContent,
+  NeptuneContent,
+} from "../components/content/";
 
 const Home: NextPageWithLayout = () => {
   const { data } = api.planets.allPlanets.useQuery(["isPlanet,eq,true"]);
@@ -23,27 +33,27 @@ const Home: NextPageWithLayout = () => {
       <div className="w-full max-w-4xl px-2 py-8 sm:px-0">
         <Tab.Group>
           <Tab.List className="flex justify-between px-5 rounded-xl bg-blue-900/20 p-1 text-white ">
-          <Tab className="hover:text-indigo-500">Sun</Tab>
-          <Tab className="hover:text-indigo-500">Mercury</Tab>
-          <Tab className="hover:text-indigo-500">Venus</Tab>
-          <Tab className="hover:text-indigo-500">Earth</Tab>
-          <Tab className="hover:text-indigo-500">Mars</Tab>
-          <Tab className="hover:text-indigo-500">Jupiter</Tab>
-          <Tab className="hover:text-indigo-500">Saturn</Tab>
-          <Tab className="hover:text-indigo-500">Uranus</Tab>
-          <Tab className="hover:text-indigo-500">Neptune</Tab>
-        </Tab.List>
-        <Tab.Panels className="text-white">
-          <Tab.Panel><Planets.SunContent /></Tab.Panel>
-          <Tab.Panel><Planets.MercuryContent /></Tab.Panel>
-          <Tab.Panel><Planets.VenusContent /></Tab.Panel>
-          <Tab.Panel><Planets.EarthContent /></Tab.Panel>
-          <Tab.Panel><Planets.MarsContent /></Tab.Panel>
-          <Tab.Panel><Planets.JupiterContent /></Tab.Panel>
-          <Tab.Panel><Planets.SaturnContent /></Tab.Panel>
-          <Tab.Panel><Planets.UranusContent /></Tab.Panel>
-          <Tab.Panel><Planets.NeptuneContent /></Tab.Panel>
-        </Tab.Panels>
+            <Tab className="hover:text-indigo-500">Sun</Tab>
+            <Tab className="hover:text-indigo-500">Mercury</Tab>
+            <Tab className="hover:text-indigo-500">Venus</Tab>
+            <Tab className="hover:text-indigo-500">Earth</Tab>
+            <Tab className="hover:text-indigo-500">Mars</Tab>
+            <Tab className="hover:text-indigo-500">Jupiter</Tab>
+            <Tab className="hover:text-indigo-500">Saturn</Tab>
+            <Tab className="hover:text-indigo-500">Uranus</Tab>
+            <Tab className="hover:text-indigo-500">Neptune</Tab>
+          </Tab.List>
+          <Tab.Panels className="text-white">
+            <Tab.Panel><SunContent /></Tab.Panel>
+            <Tab.Panel><MercuryContent /></Tab.Panel>
+            <Tab.Panel><VenusContent /></Tab.Panel>
+            <Tab.Panel><EarthContent /></Tab.Panel>
+            <Tab.Panel><MarsContent /></Tab.Panel>
+            <Tab.Panel><JupiterContent /></Tab.Panel>
+            <Tab.Panel><SaturnContent /></Tab.Panel>
+            <Tab.Panel><UranusContent /></Tab.Panel>
+            <Tab.Panel><NeptuneContent /></Tab.Panel>
+          </Tab.Panels>
         </Tab.Group>
       </div>
   );
