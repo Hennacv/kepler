@@ -1,5 +1,5 @@
 import { type NextPageWithLayout } from "./_app";
-import type { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { Layout } from "../components/layout"
 import { api } from "../utils/api";
 import React from "react";
@@ -15,33 +15,90 @@ import {
   UranusContent,
   NeptuneContent,
 } from "../components/content/";
+import { Scene } from "../components/planets/AstralBody"
+
+const astralBodies = [
+  {
+    src: "/mercury.jpg",
+    size: 2,
+  },
+  {
+    src: "/venus.jpg",
+    size: 2,
+  },
+  {
+    src: "/earth.jpg",
+    size: 2,
+  },
+  {
+    src: "/mars.jpg",
+    size: 2,
+  },
+  {
+    src: "/jupiter.jpg",
+    size: 2,
+  },
+  {
+    src: "/saturn.jpg",
+    size: 2,
+  },
+  {
+    src: "/uranus.jpg",
+    size: 2,
+  },
+  {
+    src: "/neptune.jpg",
+    size: 2,
+  },
+]
 
 const Home: NextPageWithLayout = () => {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  const [isOn, setOn] = useState(0)
+
   const { data } = api.planets.allPlanets.useQuery(["isPlanet,eq,true"]);
-  console.log({ data })
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+  console.log({ isOn })
 
   return (
-      // // <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-      //   <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-      //     <section className="text-left">
-      //       <p className="text-2xl mb-4">Our Planets ya dumbass kids</p>
-      //       <ul className="list-disc">
-      //         {data ? data.bodies.map(body => <li key={body.id}>{body.englishName}</li>) : null}
-      //       </ul>
-      //     </section>
-      //   </div>
       <div className="w-full max-w-4xl px-2 py-8 sm:px-0">
-        <Tab.Group>
+        <Tab.Group selectedIndex={isOn} onChange={setOn}>
           <Tab.List className="flex justify-between px-5 rounded-xl bg-blue-900/20 p-1 text-white ">
             <Tab className="hover:text-indigo-500">Sun</Tab>
-            <Tab className="hover:text-indigo-500">Mercury</Tab>
-            <Tab className="hover:text-indigo-500">Venus</Tab>
-            <Tab className="hover:text-indigo-500">Earth</Tab>
-            <Tab className="hover:text-indigo-500">Mars</Tab>
-            <Tab className="hover:text-indigo-500">Jupiter</Tab>
-            <Tab className="hover:text-indigo-500">Saturn</Tab>
-            <Tab className="hover:text-indigo-500">Uranus</Tab>
-            <Tab className="hover:text-indigo-500">Neptune</Tab>
+            {/* <Tab className="hover:text-indigo-500 h-20 w-20">
+            <Scene src="/mercury.jpg" size={2} />
+            </Tab> */}
+            {astralBodies.map((body) => (
+              <Tab key={body.src} className="hover:text-indigo-500 h-20 w-20">
+                {({ selected }) => <Scene src={body.src} size={body.size} selected={selected} />}
+              </Tab>
+              ))
+            }
+            {/* <Tab className="hover:text-indigo-500 h-20 w-20">
+            <Scene src="/earth.jpg" size={2} />
+            </Tab>
+            <Tab className="hover:text-indigo-500 h-20 w-20">
+            <Scene src="/mars.jpg" size={2} />
+            </Tab>
+            <Tab className="hover:text-indigo-500 h-20 w-20">
+            <Scene src="/jupiter.jpg" size={2} />
+            </Tab>
+            <Tab className="hover:text-indigo-500 h-20 w-20">
+            <Scene src="/saturn.jpg" size={2} />
+            </Tab>
+            <Tab className="hover:text-indigo-500 h-20 w-20">
+            <Scene src="/uranus.jpg" size={2} />
+            </Tab>
+            <Tab className="hover:text-indigo-500 h-20 w-20">
+              <Scene src="/neptune.jpg" size={2} />
+            </Tab> */}
           </Tab.List>
           <Tab.Panels className="text-white">
             <Tab.Panel><SunContent /></Tab.Panel>
