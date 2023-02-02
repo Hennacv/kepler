@@ -12,7 +12,7 @@ export function Layout({ children }: any) {
       <header>
         <Navbar/>
       </header>
-      <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      <main className="flex min-h-screen flex-col items-center bg-[url('/stars_mw.jpg')] bg-cover">
         {children}
       </main>
     </>

@@ -20,31 +20,31 @@ import { Scene } from "../components/planets/AstralBody"
 const astralBodies = [
   {
     src: "/mercury.jpg",
-    size: 2,
+    size: 0.9,
   },
   {
     src: "/venus.jpg",
-    size: 2,
+    size: 1.4,
   },
   {
     src: "/earth.jpg",
-    size: 2,
+    size: 1.5,
   },
   {
     src: "/mars.jpg",
-    size: 2,
+    size: 1.2,
   },
   {
     src: "/jupiter.jpg",
-    size: 2,
+    size: 3,
   },
   {
     src: "/saturn.jpg",
-    size: 2,
+    size: 2.7,
   },
   {
     src: "/uranus.jpg",
-    size: 2,
+    size: 2.2,
   },
   {
     src: "/neptune.jpg",
@@ -68,15 +68,17 @@ const Home: NextPageWithLayout = () => {
   console.log({ isOn })
 
   return (
-      <div className="w-full max-w-4xl px-2 py-8 sm:px-0">
+      <div className="w-full">
         <Tab.Group selectedIndex={isOn} onChange={setOn}>
-          <Tab.List className="flex justify-between px-5 rounded-xl bg-blue-900/20 p-1 text-white ">
-            <Tab className="hover:text-indigo-500">Sun</Tab>
+          <Tab.List className="flex justify-between items-center rounded-xl bg-blue-900/20 text-white ">
+            <Tab>
+            {({ selected }) => <Scene src="sun.jpg" size={4} selected={selected} />}
+            </Tab>
             {/* <Tab className="hover:text-indigo-500 h-20 w-20">
             <Scene src="/mercury.jpg" size={2} />
             </Tab> */}
             {astralBodies.map((body) => (
-              <Tab key={body.src} className="hover:text-indigo-500 h-20 w-20">
+              <Tab key={body.src} className="h-20 w-20 ">
                 {({ selected }) => <Scene src={body.src} size={body.size} selected={selected} />}
               </Tab>
               ))
