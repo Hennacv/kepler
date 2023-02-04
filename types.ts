@@ -93,3 +93,13 @@ export type Planet = {
     longAscNode: number,
     bodyType: string
 }
+
+export type ContentCategories = "mercury" | "venus" | "earth" | "mars" | "jupiter" | "saturn" | "neptune" | "uranus";
+export type ContentTypes = "image";
+export type ContentBody = (
+    | string
+    | { type: "image"; src: string; alt: string, height?: number, width?: number }
+)[];
+export type Content = {
+    [k in ContentCategories]?: ContentBody;
+}

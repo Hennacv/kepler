@@ -4,31 +4,33 @@ import { motion } from 'framer-motion-3d'
 import { Canvas } from '@react-three/fiber'
 import { MotionConfig } from 'framer-motion'
 
-type Body = {
+export type Body = {
+  name: string;
   src: string;
   size?: number;
   selected?: boolean;
+  position: readonly [x: number, y: number, z: number];
+  rotationSpeed: number;
 }
 
 function AstralBody(props: Body) {
-  const { size = 2, src, selected, ...rest } = props;
+  const { size = 2, src, selected, position, rotationSpeed, ...rest } = props;
   const texture = useTexture(src)
-  console.log({ selected })
-
-  // const onClick = useCallback(() => setOn(!isOn), [isOn])
+  console.log({ position })
 
   return (
       <motion.group {...rest} dispose={null}   >
         <motion.mesh
+          position={position}
           variants={{
-            on: { rotateY: 20 },
-            off: { rotateY: 0 }
+            on: { rotateY: rotationSpeed},
+            off: { }
           }}
           animate={selected ? "on" : "off" }
-          transition={{ ease: "linear", duration: selected ? 20 : 1000, repeat: Infinity}}
+          transition={{ ease: "linear", duration: selected ? 5 : 600, repeat: Infinity}}
           >
           <sphereGeometry args={[size, 64, 64]} />
-          <motion.meshStandardMaterial roughness={0.5} map={texture} />
+          <motion.meshStandardMaterial roughness={0.5} map={texture}/>
         </motion.mesh>
       </motion.group>
   )
@@ -36,11 +38,8 @@ function AstralBody(props: Body) {
 
 export function Scene(props: Body) {
  return (
-    <Canvas >
-      <motion.perspectiveCamera
-        fov={90}
-        position={[0, 0, 20]}
-      />
+    <Canvas>
+      <motion.perspectiveCamera/>
       <MotionConfig >
         <motion.group>
           <ambientLight intensity={0.4} />
