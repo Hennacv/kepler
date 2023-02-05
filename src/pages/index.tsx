@@ -4,16 +4,6 @@ import { Layout } from "../components/layout"
 import { api } from "../utils/api";
 import React from "react";
 import { Tab } from "@headlessui/react";
-import {
-  SunContent,
-  MercuryContent,
-  VenusContent,
-  EarthContent,
-  MarsContent,
-  JupiterContent,
-  SaturnContent,
-  UranusContent,
-} from "../components/content/";
 import { Content } from "../components/Content";
 import { Scene, type Body } from "../components/planets/AstralBody"
 import type { Planet } from "../../types";
@@ -126,34 +116,16 @@ const Home: NextPageWithLayout = () => {
               </Tab>
               ))
             }
-            {/* <Tab className="hover:text-indigo-500 h-20 w-20">
-            <Scene src="/earth.jpg" size={2} />
-            </Tab>
-            <Tab className="hover:text-indigo-500 h-20 w-20">
-            <Scene src="/mars.jpg" size={2} />
-            </Tab>
-            <Tab className="hover:text-indigo-500 h-20 w-20">
-            <Scene src="/jupiter.jpg" size={2} />
-            </Tab>
-            <Tab className="hover:text-indigo-500 h-20 w-20">
-            <Scene src="/saturn.jpg" size={2} />
-            </Tab>
-            <Tab className="hover:text-indigo-500 h-20 w-20">
-            <Scene src="/uranus.jpg" size={2} />
-            </Tab>
-            <Tab className="hover:text-indigo-500 h-20 w-20">
-              <Scene src="/neptune.jpg" size={2} />
-            </Tab> */}
           </Tab.List>
           <Tab.Panels className="text-white">
-            <Tab.Panel><SunContent /></Tab.Panel>
-            <Tab.Panel><MercuryContent /></Tab.Panel>
-            <Tab.Panel><VenusContent /></Tab.Panel>
+            <Tab.Panel><Content content={content.sun} /></Tab.Panel>
+            <Tab.Panel><Content content={content.mercury} /></Tab.Panel>
+            <Tab.Panel><Content content={content.venus} /></Tab.Panel>
             <Tab.Panel><Content content={content.earth} /></Tab.Panel>
-            <Tab.Panel><MarsContent /></Tab.Panel>
-            <Tab.Panel><JupiterContent /></Tab.Panel>
-            <Tab.Panel><SaturnContent /></Tab.Panel>
-            <Tab.Panel><UranusContent /></Tab.Panel>
+            <Tab.Panel><Content content={content.mars} /></Tab.Panel>
+            <Tab.Panel><Content content={content.jupiter} /></Tab.Panel>
+            <Tab.Panel><Content content={content.saturn} /></Tab.Panel>
+            <Tab.Panel><Content content={content.uranus} /></Tab.Panel>
             <Tab.Panel><Content content={content.neptune} /></Tab.Panel>
           </Tab.Panels>
         </Tab.Group>

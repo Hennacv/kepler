@@ -94,7 +94,7 @@ export type Planet = {
     bodyType: string
 }
 
-export type ContentCategories = "mercury" | "venus" | "earth" | "mars" | "jupiter" | "saturn" | "neptune" | "uranus";
+export type ContentCategories = "mercury" | "venus" | "earth" | "mars" | "jupiter" | "saturn" | "neptune" | "uranus" | "sun";
 export type ContentTypes = "image";
 export type ContentBody = (
     | string
