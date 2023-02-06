@@ -11,6 +11,8 @@ export type Body = {
   selected?: boolean;
   position: readonly [x: number, y: number, z: number];
   rotationSpeed: number;
+  width: string;
+  height: string;
 }
 
 function AstralBody(props: Body) {
