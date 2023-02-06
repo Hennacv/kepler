@@ -19,6 +19,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 25,
     width: "w-[200px]",
     height: "h-[150px]",
+    margin: "",
   },
   {
     name: "Mercury",
@@ -28,6 +29,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 88,
     width: "w-20",
     height: "h-20",
+    margin: "",
   },
   {
     name: "Venus",
@@ -37,6 +39,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 243,
     width: "w-20",
     height: "h-20",
+    margin: "",
   },
   {
     name: "Earth",
@@ -46,7 +49,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 23.5,
     width: "w-20",
     height: "h-20",
-
+    margin: "",
   },
   {
     name: "Mars",
@@ -56,7 +59,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 24.6,
     width: "w-20",
     height: "h-20",
-
+    margin: "",
   },
   {
     name: "Jupiter",
@@ -66,6 +69,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 9.9,
     width: "w-20",
     height: "h-20",
+    margin: "ml-14",
   },
   {
     name: "Saturn",
@@ -75,6 +79,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 11,
     width: "w-20",
     height: "h-20",
+    margin: "ml-14",
   },
   {
     name: "Uranus",
@@ -84,6 +89,7 @@ const astralBodies: Body[] = [
     rotationSpeed: -17,
     width: "w-20",
     height: "h-20",
+    margin: "ml-16",
   },
   {
     name: "Neptune",
@@ -93,6 +99,7 @@ const astralBodies: Body[] = [
     rotationSpeed: 16,
     width: "w-20",
     height: "h-20",
+    margin: "ml-16",
   },
 ];
 
@@ -114,7 +121,7 @@ const updateBodies = (data: { bodies: Planet[] } | undefined) => {
 
 const Home: NextPageWithLayout = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
-  const [isOn, setOn] = useState(0)
+  const [isOn, setOn] = useState(3)
 
   const { data } = api.planets.allPlanets.useQuery(["isPlanet,eq,true"]);
   const fuckinPlanets = updateBodies(data);
@@ -131,13 +138,10 @@ const Home: NextPageWithLayout = () => {
   return (
       <div className="w-full">
         <Tab.Group selectedIndex={isOn} onChange={setOn}>
-          <Tab.List className="flex items-center rounded-xl bg-blue-900/20">
-            {/* <Tab className="w-[200px]">
-          {({ selected }) => <Scene name="Sun" src="sun.jpg" size={4} selected={selected} position={[-1,1.5,0]} rotationSpeed={25}/>}
-            </Tab> */}
+          <Tab.List className="sticky top-14 flex items-center rounded-xl bg-blue-900/20">
             {astralBodies.map((body) => (
-              <Tab key={body.src} className={body.height + " " + body.width}>
-                {({ selected }) => <Scene name={body.name} src={body.src} size={body.size} selected={selected} position={body.position} rotationSpeed={body.rotationSpeed} width={body.width} height={body.height}/>}
+              <Tab key={body.src} className={body.height + " " + body.width + " " + body.margin}>
+                {({ selected }) => <Scene name={body.name} src={body.src} size={body.size} selected={selected} position={body.position} rotationSpeed={body.rotationSpeed} width={body.width} height={body.height} margin={body.margin}/>}
               </Tab>
               ))
             }

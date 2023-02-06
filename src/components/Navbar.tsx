@@ -12,16 +12,15 @@ export function Navbar() {
   const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
-    <header>
-      <nav className="flex items-center  max-w-7xl px-6 lg:px-12">
+      <nav className="z-30 flex items-center max-w-7xl px-6 lg:px-12 bg-[#040c18]">
         {/* <div
           onClick={() => setNavActive(!navActive)}
           className={`nav__menu-bar`}
         >
         </div> */}
         <Link href={"/"} className="flex gap-x-2 pr-7">
-          <p className="font-heading">Kepler</p>
-          <FaSpaceShuttle className="w-7 h-6"/>
+          <p className="font-heading text-[#D2D6D9]">Kepler</p>
+          <FaSpaceShuttle className="w-7 h-6 text-[#D2D6D9]"/>
         </Link>
         <div className={`${navActive ? "active" : ""} flex  gap-x-5 py-4`}>
         {MENU_LIST.map((menu, idx) => (
@@ -31,13 +30,12 @@ export function Navbar() {
                 setNavActive(false);
               }}
               key={menu.text}
-              className="hover:text-indigo-500"
+              className="text-[#D2D6D9] hover:text-rose-500"
             >
               <NavItem active={activeIdx === idx} {...menu} />
             </div>
           ))}
         </div>
       </nav>
-    </header>
   );
 }

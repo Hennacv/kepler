@@ -13,6 +13,7 @@ export type Body = {
   rotationSpeed: number;
   width: string;
   height: string;
+  margin: string;
 }
 
 function AstralBody(props: Body) {
@@ -21,7 +22,7 @@ function AstralBody(props: Body) {
   console.log({ position })
 
   return (
-      <motion.group {...rest} dispose={null}   >
+      <motion.group {...rest} dispose={null}>
         <motion.mesh
           position={position}
           variants={{
