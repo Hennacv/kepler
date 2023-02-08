@@ -7,7 +7,7 @@ import { MotionConfig } from 'framer-motion'
 export type Body = {
   name: string;
   src: string;
-  size?: number;
+  size: number;
   selected?: boolean;
   position: readonly [x: number, y: number, z: number];
   rotationSpeed: number;
