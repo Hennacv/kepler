@@ -1,5 +1,7 @@
+// import { motion } from "framer-motion";
 import Image from "next/image"
 import { type ContentBody } from "../../types";
+import { Car } from "./svg/Car";
 
 type Props = {
   content?: ContentBody
@@ -16,7 +18,16 @@ export function Content({ content }: Props) {
             if (item.type === "image") {
               return <Image key={JSON.stringify(item.alt)} alt={item.alt} src={item.src} width={item.width ?? 300} height={item.height ?? 500} />
             }
+
+            if (item.type === "car") {
+              return (
+                <div key="car" className="min-h-min w-full stroke-[#D2D6D9]">
+                  <Car />
+                </div>
+              )
+            }
           }
+
 
           if (typeof item === "string") {
             return <p key={JSON.stringify(item)} className="pb-4 text-indigo-100">{item}</p>

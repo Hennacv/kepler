@@ -95,10 +95,11 @@ export type Planet = {
 }
 
 export type ContentCategories = "mercury" | "venus" | "earth" | "mars" | "jupiter" | "saturn" | "neptune" | "uranus" | "sun";
-export type ContentTypes = "image";
+export type ContentTypes = "image" | "car";
 export type ContentBody = (
     | string
     | { type: "image"; src: string; alt: string, height?: number, width?: number }
+    | { type: "car" }
 )[];
 export type Content = {
     [k in ContentCategories]?: ContentBody;
