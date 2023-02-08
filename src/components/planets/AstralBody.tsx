@@ -19,7 +19,7 @@ export type Body = {
 function AstralBody(props: Body) {
   const { size = 2, src, selected, position, rotationSpeed, ...rest } = props;
   const texture = useTexture(src)
-  console.log({ position })
+  console.log({ name: props.name, rotationSpeed })
 
   return (
       <motion.group {...rest} dispose={null}>
@@ -27,10 +27,10 @@ function AstralBody(props: Body) {
           position={position}
           variants={{
             on: { rotateY: rotationSpeed},
-            off: { }
+            off: { rotateY: 0 }
           }}
           animate={selected ? "on" : "off" }
-          transition={{ ease: "linear", duration: selected ? 5 : 600, repeat: Infinity}}
+          transition={{ ease: "linear", duration: selected ? 5 : 10000000, repeat: Infinity}}
           >
           <sphereGeometry args={[size, 64, 64]} />
           <motion.meshStandardMaterial roughness={0.5} map={texture}/>

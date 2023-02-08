@@ -9,6 +9,12 @@ module.exports = {
         sans: ['var(--andika-font)', ...fontFamily.sans],
         heading: ['var(--anek-font)', ...fontFamily.sans],
       },
+      colors: {
+        space: {
+          white: "#D2D6D9",
+          black: "#040c18",
+        }
+      },
     },
   },
   plugins: [],

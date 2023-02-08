@@ -12,7 +12,7 @@ export function Content({ content }: Props) {
   if (!content) return <p className="max-w-xl mx-auto">There doesn&apos;t seem to be any content for this planet.</p>;
 
   return (
-    <section className="max-w-xl mx-auto">
+    <section className="max-w-xl mx-auto px-6 md:px-0">
         {content.map((item) => {
           if (typeof item !== "string") {
             if (item.type === "image") {
@@ -21,7 +21,7 @@ export function Content({ content }: Props) {
 
             if (item.type === "car") {
               return (
-                <div key="car" className="min-h-min w-full stroke-[#D2D6D9]">
+                <div key="car" className="min-h-min stroke-space-white">
                   <Car />
                 </div>
               )

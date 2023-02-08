@@ -124,7 +124,7 @@ const Home: NextPageWithLayout = () => {
   const [isOn, setOn] = useState(3)
 
   const { data } = api.planets.allPlanets.useQuery(["isPlanet,eq,true"]);
-  const fuckinPlanets = updateBodies(data);
+  const updatedBodies = updateBodies(data);
 
   React.useEffect(() => {
     setHasMounted(true);
@@ -133,20 +133,19 @@ const Home: NextPageWithLayout = () => {
   if (!hasMounted) {
     return null;
   }
-  console.log({ fuckinPlanets })
 
   return (
       <div className="w-full">
         <Tab.Group selectedIndex={isOn} onChange={setOn}>
-          <Tab.List className="sticky top-14 flex items-center rounded-xl bg-blue-900/20">
-            {astralBodies.map((body) => (
+          <Tab.List className="sticky top-14 flex overflow-x-scroll md:overflow-x-auto items-center bg-gradient-to-b from-space-black via-space-black to-transparent">
+            {updatedBodies.map((body) => (
               <Tab key={body.src} className={body.height + " " + body.width + " " + body.margin}>
                 {({ selected }) => <Scene name={body.name} src={body.src} size={body.size} selected={selected} position={body.position} rotationSpeed={body.rotationSpeed} width={body.width} height={body.height} margin={body.margin}/>}
               </Tab>
               ))
             }
           </Tab.List>
-          <Tab.Panels className="text-white">
+          <Tab.Panels className="text-white mt-14">
             <Tab.Panel><Content content={content.sun} /></Tab.Panel>
             <Tab.Panel><Content content={content.mercury} /></Tab.Panel>
             <Tab.Panel><Content content={content.venus} /></Tab.Panel>
