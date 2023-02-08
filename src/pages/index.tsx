@@ -8,6 +8,7 @@ import { Content } from "../components/Content";
 import { Scene, type Body } from "../components/planets/AstralBody"
 import type { Planet } from "../../types";
 import { content } from "../utils/content";
+import { Blush } from "../components/Blush";
 // import { getBody } from "@trpc/client/dist/links/internals/httpUtils";
 
 const astralBodies: Body[] = [
@@ -133,14 +134,18 @@ const Home: NextPageWithLayout = () => {
   if (!hasMounted) {
     return null;
   }
-
+<div className="absolute blur-xl "/>
   return (
-      <div className="w-full">
+      <div className="w-full ">
         <Tab.Group selectedIndex={isOn} onChange={setOn}>
           <Tab.List className="sticky top-14 flex overflow-x-scroll md:overflow-x-auto items-center bg-gradient-to-b from-space-black via-space-black to-transparent">
             {updatedBodies.map((body) => (
-              <Tab key={body.src} className={body.height + " " + body.width + " " + body.margin}>
-                {({ selected }) => <Scene name={body.name} src={body.src} size={body.size} selected={selected} position={body.position} rotationSpeed={body.rotationSpeed} width={body.width} height={body.height} margin={body.margin}/>}
+              <Tab key={body.src} className={body.height + " " + body.width + " " + body.margin + " relative"}>
+                {({ selected }) => (
+                  <>
+                    <Scene name={body.name} src={body.src} size={body.size} selected={selected} position={body.position} rotationSpeed={body.rotationSpeed} width={body.width} height={body.height} margin={body.margin}/>
+                    {selected ? <Blush size={body.size} /> : null}
+                  </>)}
               </Tab>
               ))
             }
