@@ -19,7 +19,6 @@ export type Body = {
 function AstralBody(props: Body) {
   const { size = 2, src, selected, position, rotationSpeed, ...rest } = props;
   const texture = useTexture(src)
-  console.log({ name: props.name, rotationSpeed })
 
   return (
       <motion.group {...rest} dispose={null}>

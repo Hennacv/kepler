@@ -5,7 +5,6 @@ import { FaSpaceShuttle } from "react-icons/fa"
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
-  { text: "Planets", href: "/planets" },
 ];
 export function Navbar() {
   const [navActive, setNavActive] = useState<boolean | null>(null);
