@@ -9,7 +9,6 @@ import { Scene, type Body } from "../components/planets/AstralBody"
 import type { Planet } from "../../types";
 import { content } from "../utils/content";
 import { Blush } from "../components/Blush";
-// import { getBody } from "@trpc/client/dist/links/internals/httpUtils";
 
 const astralBodies: Body[] = [
   {
@@ -138,7 +137,7 @@ const Home: NextPageWithLayout = () => {
   return (
       <div className="w-full ">
         <Tab.Group selectedIndex={isOn} onChange={setOn}>
-          <Tab.List className="sticky top-14 flex overflow-x-scroll md:overflow-x-auto items-center bg-gradient-to-b from-space-black via-space-black to-transparent">
+          <Tab.List className="sticky top-14 flex overflow-x-scroll md:overflow-x-auto items-center bg-gradient-to-b from-space-black via-space-black to-transparent scrollbar scrollbar-h-1 scrollbar-thumb-indigo-900 scrollbar-track-space-black">
             {updatedBodies.map((body) => (
               <Tab key={body.src} className={body.height + " " + body.width + " " + body.margin + " relative"}>
                 {({ selected }) => (
